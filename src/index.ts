@@ -1,6 +1,7 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
-import userRoutes from './routes/userRoutes'
+import userRoutes from './routes/userRoutes';
+import conn from './db';
 
 dotenv.config();
 
@@ -17,3 +18,5 @@ app.use('/api/users', userRoutes);
 app.listen(port, () => {
 	console.log(`Express Server is running at http://localhost:${port}`);
 });
+
+conn();
