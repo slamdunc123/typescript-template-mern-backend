@@ -8,9 +8,12 @@ const conn = async () => {
 	try {
 		await mongoose.connect(db);
 		console.log('mongoDB connected successfully');
-	} catch (err: any) {
-		console.error(err.message);
-		// exit process with a failure
+	} catch (error) {
+		if (error instanceof Error) {
+			console.log(error.message);
+		} else {
+			console.log('Unexpected error', error);
+		}
 		process.exit(1);
 	}
 };
